@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 
 {% block content %}
-    <p>I'm from category</p>
+<p class="text-center fs-3 fw-bold">Add Category</p>
+
+<form class="d-flex align-items-center justify-content-center gap-3" method="POST">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button class="btn btn-warning mb-2">Add</button>
+</form>
+
+
 {% endblock content %}
-    
