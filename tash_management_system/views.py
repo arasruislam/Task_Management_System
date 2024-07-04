@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from task.models import Task_Model
 
 
 def home(request):
-    return render(request, "index.html")
+    tasks = Task_Model.objects.all()
+    return render(request, "index.html", {"tasks": tasks})

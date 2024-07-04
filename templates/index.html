@@ -2,5 +2,40 @@
 
 
 {% block content %}
-<h3>Homepage</h3>
+
+<div class="row">
+    {% for task in tasks %}
+    <div class="col-sm-4 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{task.title}}</h5>
+                <p class="border-1 border-bottom">Assigning Date: <span
+                        class="fw-bold text-primary">{{ task.Task_Assign_Data|date:"Y-m-d" }}</span></p>
+                <p class="card-text">{{task.description}}</p>
+                <small class="fw-bold">Is Completed:
+                    {% if task.is_completed == True %}
+                    <span class="bg-info-subtle px-2 py-1 rounded-2">{{task.is_completed}}</span>
+                    {% else %}
+                    <span class="bg-warning-subtle px-2 py-1 rounded-2">{{task.is_completed}}</span>
+                    {% endif %}
+                </small>
+
+                <div class="d-flex my-2 justify-content-start align-items-center">
+                    <p>Categories:</p>
+                    {% for task in task.category.all %}
+                    <button class="btn btn-warning m-1 btn-sm">{{task.name}}</button>
+                    {% endfor %}
+                </div>
+
+                {% comment %} delete or edit button {% endcomment %}
+                <div class="d-flex align-content-center gap-1 mt-2">
+                    <a href="#" class="btn btn-info">Edit</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
 {% endblock content %}
