@@ -28,10 +28,14 @@
                 </div>
 
                 {% comment %} delete or edit button {% endcomment %}
+                {% if task.is_completed == True %}
+                <button class="btn btn-success" disabled>Completed</button>
+                {% else %}
                 <div class="d-flex align-content-center gap-1 mt-2">
-                    <a href="#" class="btn btn-info">Edit</a>
-                    <a href="#" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'EditTask' task.id %}" class="btn btn-info">Edit</a>
+                    <a href="{% url 'DeleteTask' task.id %}" class="btn btn-danger">Delete</a>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
