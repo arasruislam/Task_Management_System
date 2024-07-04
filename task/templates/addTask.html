@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 
 {% block content %}
-<p>I'm from Task app</p>
+<p class="text-center fs-3 fw-bold">Add Your Task</p>
+
+<form method="POST">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button class="btn btn-primary">Added</button>
+</form>
 {% endblock content %}

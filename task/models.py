@@ -6,7 +6,7 @@ from django import forms
 class Task_Model(models.Model):
     title = models.CharField(max_length=60)
     description = models.TextField()
-    is_completed = models.BooleanField()
+    is_completed = models.BooleanField(default=False)
     Task_Assign_Data = models.DateField()
 
     # relation with category => many to many relation
